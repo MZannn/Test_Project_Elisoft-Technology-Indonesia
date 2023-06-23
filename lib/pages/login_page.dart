@@ -12,10 +12,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginCubit = context.read<LoginCubit>();
-    final TextEditingController usernameC =
-        TextEditingController(text: "rachman.latif@gmail.com");
-    final TextEditingController passwordC =
-        TextEditingController(text: "testing");
+    final TextEditingController usernameC = TextEditingController();
+    final TextEditingController passwordC = TextEditingController();
     final Key formKey = GlobalKey<FormState>();
     return Scaffold(
       body: SafeArea(
@@ -69,11 +67,19 @@ class LoginPage extends StatelessWidget {
               BlocConsumer<LoginCubit, LoginState>(
                 listener: (context, state) {
                   if (state is LoginLoading) {
-                    CircularProgressIndicator(
-                      color: ColorConstants.secondaryColor,
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return SizedBox(
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              color: ColorConstants.secondaryColor,
+                            ),
+                          ),
+                        );
+                      },
                     );
-                  }
-                  if (state is LoginSuccess) {
+                  } else if (state is LoginSuccess) {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
                       Routes.articles,
