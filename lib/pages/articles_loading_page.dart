@@ -39,9 +39,9 @@ class ArticlesLoadingPage extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Column(
+                        child: const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             ShimmerLoading(
                               height: 24,
                               width: 100,

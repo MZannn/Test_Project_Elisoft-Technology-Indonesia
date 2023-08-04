@@ -177,6 +177,11 @@ class ArticlesPage extends StatelessWidget {
               ),
             );
           }
+          if (state is ArticlesError) {
+            return const Center(
+              child: Text("Error"),
+            );
+          }
           return const SizedBox();
         },
       ),

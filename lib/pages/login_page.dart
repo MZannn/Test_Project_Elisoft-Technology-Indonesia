@@ -79,11 +79,19 @@ class LoginPage extends StatelessWidget {
                         );
                       },
                     );
-                  } else if (state is LoginSuccess) {
+                  }
+                  if (state is LoginSuccess) {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
                       Routes.articles,
                       (route) => false,
+                    );
+                  }
+                  if (state is LoginError) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(state.message),
+                      ),
                     );
                   }
                 },
