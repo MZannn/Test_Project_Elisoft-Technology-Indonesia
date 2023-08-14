@@ -69,6 +69,7 @@ class LoginPage extends StatelessWidget {
                   if (state is LoginLoading) {
                     showDialog(
                       context: context,
+                      barrierDismissible: false,
                       builder: (context) {
                         return SizedBox(
                           child: Center(
@@ -77,6 +78,12 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                         );
+                      },
+                    );
+                    Future.delayed(
+                      const Duration(seconds: 2),
+                      () {
+                        Navigator.pop(context);
                       },
                     );
                   }
