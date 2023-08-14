@@ -24,8 +24,8 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void login(String username, String password) async {
+    emit(LoginLoading());
     try {
-      emit(LoginLoading());
       await _apiService.post(
         endpoint: 'auth/login',
         body: {
